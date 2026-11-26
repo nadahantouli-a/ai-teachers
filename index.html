@@ -127,6 +127,9 @@ nav .btn{min-height:42px;padding:6px 18px;font-size:15px;box-shadow:3px 3px 0 #0
 .contact h2{font-size:clamp(36px,5vw,60px)}
 .contact p{max-width:56ch;margin-inline:auto;font-size:18px}
 .mail{margin-top:22px;font-size:clamp(17px,2.2vw,22px);direction:ltr}
+.mail-alt{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:15px;font-weight:600}
+.mail-alt a,.mail-alt button{font:inherit;color:var(--nav);background:#fff;border:2px solid var(--nav);border-radius:10px;padding:6px 14px;cursor:pointer;text-decoration:none}
+.mail-alt a:hover,.mail-alt button:hover{background:var(--nav);color:#fff}
 footer{background:var(--nav);color:#c9d1f5;padding:24px max(5vw,16px);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 .snip{animation:snip 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:20% 50%}
@@ -300,7 +303,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 <section class="band contact" id="contact"><div class="wrap">
 <h2>لنبدأ بجلسة تشخيص قصيرة</h2>
 <p>نتعرّف فيها على معلميكم ومراحلهم وموادهم، ونحدّد موعد اليوم التدريبي بما يناسب جدول المدرسة.</p>
-<a class="btn b-red mail" href="mailto:nada.ai.engineer@gmail.com">nada.ai.engineer@gmail.com</a>
+<a class="btn b-red mail" id="mailBtn" href="mailto:nada.ai.engineer@gmail.com">nada.ai.engineer@gmail.com</a>
+<div class="mail-alt">
+<span>لم يُفتح البريد؟</span>
+<a id="gmailBtn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=nada.ai.engineer@gmail.com" target="_blank" rel="noopener">افتح الرسالة في Gmail</a>
+<button type="button" id="copyBtn">نسخ العنوان</button>
+</div>
 </div></section>
 
 <footer><div class="wrap"><span>دورة الذكاء الاصطناعي للمعلمين · ندى حنتولي</span><a href="https://pdfcut.pages.dev/">pdfcut.pages.dev</a></div></footer>
@@ -348,6 +356,21 @@ $("tools").innerHTML=T.map(t=>`<div class="sticker tool"><i style="background:${
 $("steps").innerHTML=ST.map(s=>`<li><span>${s}</span></li>`).join("");
 $("road").innerHTML=F.map(f=>`<div class="stop"><div class="dot"><svg viewBox="0 0 24 24">${ic[f[0]]}</svg></div><div class="when">${f[1]}</div><h3>${f[2]}</h3><p>${f[3]}</p></div>`).join("");
 $("after").innerHTML=A.map((a,i)=>`<div class="sticker"><b>${i+1}</b><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join("");
+}
+</script>
+<script>
+{
+const to="nada.ai.engineer@gmail.com";
+const su="طلب جلسة تشخيص – دورة الذكاء الاصطناعي للمعلمين";
+const body=["مرحباً أ. ندى،","","نرغب في التعرّف أكثر على دورة الذكاء الاصطناعي للمعلمين، ومعرفة التكلفة، وترتيب جلسة تشخيص قصيرة.","","اسم المدرسة: ","المدينة: ","عدد المعلمين المشاركين (تقريباً): ","المراحل الدراسية: ","المواعيد المناسبة لجلسة التشخيص: ","رقم الهاتف للتواصل: ","","مع الشكر،","الاسم: ","المنصب: "].join("\n");
+const e=encodeURIComponent;
+document.getElementById("mailBtn").href="mailto:"+to+"?subject="+e(su)+"&body="+e(body);
+document.getElementById("gmailBtn").href="https://mail.google.com/mail/?view=cm&fs=1&to="+e(to)+"&su="+e(su)+"&body="+e(body);
+const c=document.getElementById("copyBtn");
+c.addEventListener("click",async()=>{
+try{await navigator.clipboard.writeText(to)}catch(_){const t=document.createElement("textarea");t.value=to;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}
+c.textContent="✓ تم النسخ";setTimeout(()=>c.textContent="نسخ العنوان",2000);
+});
 }
 </script>
 </body>
