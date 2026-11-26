@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الذكاء الاصطناعي للمعلمين</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Noto+Kufi+Arabic:wght@600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE lively school poster for principals: confident, warm, clear
+   IDEA a school pencil case: cobalt notebook, pencil yellow, red scissors, stickers with hard outlines
+   PICTURE desk scene: textbook cut by red scissors into flying lesson sheets that land on a laptop as a ready plan
+   COLOUR cobalt dominant in full-bleed bands, pencil yellow support, scissor red accent, deep ink outlines
+   TYPE Lalezar for poster headings + Noto Kufi for card titles + IBM Plex Sans Arabic for text
+   LAYOUT laptop: cobalt hero with title right, scene left; phone: title, scene, buttons */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0b1029);
+--ink:light-dark(#0e1430,#eef1ff);
+--soft:light-dark(#46507a,#b4bde6);
+--card:light-dark(#ffffff,#141b3d);
+--line:light-dark(#0e1430,#000000);
+--cob:#2346d8;--cobd:#1a33a6;--yel:#ffc83d;--red:#ef3e36;--nav:#0e1430;--white:#fff}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 "IBM Plex Sans Arabic",Tahoma,sans-serif;overflow-x:clip}
+h1,h2{font-family:Lalezar,"Noto Kufi Arabic",Tahoma,sans-serif;font-weight:400;line-height:1.25;margin:0;text-wrap:balance}
+h1{font-size:clamp(38px,6vw,72px)}
+h2{font-size:clamp(32px,4.4vw,52px);margin-bottom:10px}
+h3{font-family:"Noto Kufi Arabic",Tahoma,sans-serif;font-size:19px;font-weight:800;line-height:1.5;margin:0}
+p{margin:0 0 12px}
+a{color:inherit}
+.wrap{max-width:1240px;margin-inline:auto}
+.band{padding-block:clamp(48px,6vw,96px);padding-inline:max(5vw,16px)}
+.intro{max-width:62ch;color:var(--soft);font-size:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:10px 26px;border-radius:14px;font-weight:700;text-decoration:none;border:2.5px solid var(--nav);box-shadow:4px 4px 0 var(--nav);transition:transform .12s,box-shadow .12s;font-size:17px}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--nav)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--red);outline-offset:4px}
+.b-yel{background:var(--yel);color:var(--nav)}
+.b-white{background:#fff;color:var(--nav)}
+.b-red{background:var(--red);color:#fff}
+nav{position:sticky;top:0;z-index:9;background:var(--nav);color:#fff}
+nav .wrap{display:flex;align-items:center;gap:22px;padding:10px max(5vw,16px);flex-wrap:wrap}
+.brand{font-family:Lalezar,sans-serif;font-size:24px;text-decoration:none;margin-inline-end:auto;display:flex;align-items:center;gap:10px}
+.brand i{width:34px;height:34px;border-radius:10px;background:var(--yel);display:grid;place-items:center;font-style:normal;color:var(--nav)}
+.links{display:flex;gap:4px 20px;flex-wrap:wrap;font-size:15px}
+.links a{text-decoration:none;opacity:.85;padding:8px 0}
+.links a:hover{opacity:1;color:var(--yel)}
+nav .btn{min-height:42px;padding:6px 18px;font-size:15px;box-shadow:3px 3px 0 #000;border-color:#000}
+.hero{background:var(--cob);color:#fff;position:relative;padding-bottom:clamp(70px,8vw,120px);background-image:radial-gradient(rgba(255,255,255,.13) 1.5px,transparent 1.6px);background-size:26px 26px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px 48px;align-items:center}
+.tag{display:inline-block;background:var(--yel);color:var(--nav);font-weight:700;border-radius:999px;padding:4px 16px;font-size:15px;border:2px solid var(--nav);margin-bottom:18px}
+.hero .lead{font-size:clamp(18px,1.6vw,21px);color:#e3e9ff;margin:18px 0 26px;max-width:46ch}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.scene{position:relative;aspect-ratio:1.15}
+.scene svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.edge{position:absolute;inset-inline:0;bottom:-1px;height:clamp(40px,5vw,70px);width:100%}
+.stats{background:var(--yel);color:var(--nav);border-block:3px solid var(--nav)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stats div{padding:22px 18px;border-inline-start:3px solid var(--nav);text-align:center}
+.stats div:first-child{border:0}
+.stats b{display:block;font-family:Lalezar,sans-serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1.1}
+.stats span{font-weight:600;font-size:15px}
+.sticker{background:var(--card);border:2.5px solid var(--line);border-radius:20px;box-shadow:7px 7px 0 var(--line);padding:24px}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:34px}
+.why svg{width:74px;height:74px;display:block;margin-bottom:12px}
+.why p{color:var(--soft);margin:6px 0 0}
+.day{background:var(--cob);color:#fff;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:100% 38px}
+.day .intro{color:#dfe6ff}
+.tl{position:relative;margin-top:36px;display:grid;gap:22px}
+.tl::before{content:"";position:absolute;top:10px;bottom:10px;right:73px;width:4px;background:var(--yel);border-radius:4px}
+.ses{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:start;position:relative}
+.ses .t{background:var(--yel);color:var(--nav);border:2.5px solid var(--nav);border-radius:18px;text-align:center;padding:10px 4px 8px;box-shadow:5px 5px 0 var(--nav);position:relative;z-index:1}
+.ses .t b{display:block;font-family:Lalezar,sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,42px);line-height:1.05;white-space:nowrap}
+.ses .t span{font-size:13px;font-weight:700}
+.ses .sticker{color:var(--ink);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:8px 28px;align-items:baseline;box-shadow:7px 7px 0 var(--nav);border-color:var(--nav)}
+.ses .n{font-family:"Noto Kufi Arabic",sans-serif;font-size:13px;color:var(--red);font-weight:800;display:block}
+.ses p{margin:0;color:var(--soft)}
+.flex{margin-top:40px;background:var(--yel);color:var(--nav);border:2.5px solid var(--nav);border-radius:22px;box-shadow:8px 8px 0 var(--nav);padding:28px clamp(20px,3vw,36px)}
+.flex h3{font-family:Lalezar,sans-serif;font-weight:400;font-size:clamp(26px,3vw,34px)}
+.flex ul{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 34px}
+.flex li{padding-inline-start:34px;position:relative}
+.flex li::before{content:"";position:absolute;right:0;top:7px;width:20px;height:20px;border-radius:6px;background:var(--cob);border:2px solid var(--nav)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px 56px;align-items:start}
+.outs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:26px}
+.outs .sticker:nth-child(1){background:var(--yel);color:var(--nav)}
+.outs .sticker:nth-child(4){background:var(--red);color:#fff}
+.outs .sticker:nth-child(1) p,.outs .sticker:nth-child(4) p{color:inherit;opacity:.9}
+.outs p{color:var(--soft);margin:6px 0 0;font-size:16px}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:26px}
+.tool{display:flex;align-items:center;gap:14px;padding:16px 18px}
+.tool i{flex:none;width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-style:normal;font-family:Lalezar,sans-serif;font-size:24px;border:2.5px solid var(--line);color:#fff}
+.tool small{display:block;color:var(--soft);font-size:14px;line-height:1.5}
+.free{margin-top:22px;font-weight:700;display:inline-block;background:var(--cob);color:#fff;padding:6px 18px;border-radius:12px;border:2.5px solid var(--line)}
+.mq{background:var(--red);color:#fff}
+.mq .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px 56px;align-items:center}
+.mq .intro{color:#ffe3e1}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 26px}
+.chips span{background:rgba(255,255,255,.16);border:2px solid #fff;border-radius:999px;padding:4px 14px;font-weight:600;font-size:15px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:16px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:center;background:#fff;color:var(--nav);border:2.5px solid var(--nav);border-radius:18px;box-shadow:6px 6px 0 var(--nav);padding:14px 18px}
+.steps li::before{content:counter(s);width:52px;height:52px;border-radius:50%;background:var(--yel);border:2.5px solid var(--nav);display:grid;place-items:center;font-family:Lalezar,sans-serif;font-size:28px}
+.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:40px;position:relative}
+.road::before{content:"";position:absolute;top:34px;right:12%;left:12%;border-top:4px dashed var(--cob)}
+.stop{text-align:center;position:relative}
+.stop .dot{width:70px;height:70px;margin:0 auto 16px;border-radius:50%;background:var(--cob);border:3px solid var(--line);box-shadow:4px 4px 0 var(--line);display:grid;place-items:center;color:#fff}
+.stop .dot svg{width:34px;height:34px}
+.stop:nth-child(2) .dot{background:var(--yel);color:var(--nav)}
+.stop:nth-child(3) .dot{background:var(--red)}
+.stop .when{font-weight:800;color:var(--red);font-size:14px;font-family:"Noto Kufi Arabic",sans-serif}
+.stop p{color:var(--soft);font-size:15.5px;margin:6px 0 0}
+.after{background:var(--nav);color:#fff}
+.after .intro{color:#c9d1f5}
+.acards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:30px}
+.acards .sticker{background:#18204a;color:#fff;border-color:#000;box-shadow:7px 7px 0 var(--yel)}
+.acards b{font-family:Lalezar,sans-serif;font-weight:400;font-size:44px;color:var(--yel);line-height:1;display:block;margin-bottom:8px}
+.acards p{color:#c9d1f5;margin:8px 0 0;font-size:16px}
+.cost .sticker h2{font-size:clamp(28px,3.4vw,40px)}
+.req{list-style:none;padding:0;margin:14px 0 0}
+.req li{display:flex;gap:14px;align-items:center;font-weight:600;font-size:18px}
+.req li::before{content:"✓";flex:none;width:38px;height:38px;border-radius:10px;background:var(--yel);color:var(--nav);border:2.5px solid var(--line);display:grid;place-items:center;font-weight:800}
+.trainer{display:flex;gap:18px;align-items:flex-start;margin-top:22px;padding-top:22px;border-top:2px dashed color-mix(in srgb,var(--ink) 30%,transparent)}
+.avatar{flex:none;width:64px;height:64px;border-radius:50%;background:var(--cob);color:#fff;border:2.5px solid var(--line);display:grid;place-items:center;font-family:Lalezar,sans-serif;font-size:30px}
+.contact{background:var(--yel);color:var(--nav);text-align:center;border-top:3px solid var(--nav)}
+.contact h2{font-size:clamp(36px,5vw,60px)}
+.contact p{max-width:56ch;margin-inline:auto;font-size:18px}
+.mail{margin-top:22px;font-size:clamp(17px,2.2vw,22px);direction:ltr}
+footer{background:var(--nav);color:#c9d1f5;padding:24px max(5vw,16px);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.snip{animation:snip 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:20% 50%}
+.fly{animation:fly 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.fly2{animation-delay:-1.3s}.fly3{animation-delay:-2.6s}
+@keyframes snip{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg)}}
+@keyframes fly{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(3deg)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.snip,.fly,.btn{animation:none;transition:none}}
+@media(max-width:960px){.hero .wrap,.split,.mq .wrap{grid-template-columns:minmax(0,1fr)}.why,.acards{grid-template-columns:minmax(0,1fr)}.ses .sticker{grid-template-columns:minmax(0,1fr)}.scene{max-width:560px;width:100%;margin-inline:auto}}
+@media(max-width:700px){.links{display:none}.stats .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border:0}.stats div:nth-child(n+3){border-top:3px solid var(--nav)}.road{grid-template-columns:repeat(2,minmax(0,1fr))}.road::before{display:none}.flex ul,.outs,.tools{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){body{font-size:16px}.ses{grid-template-columns:minmax(0,1fr);gap:12px}.ses .t{display:flex;align-items:center;justify-content:center;gap:10px;max-width:220px}.tl::before{display:none}.road{grid-template-columns:minmax(0,1fr)}nav .btn{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a class="brand" href="#top"><i>✂</i>الذكاء الاصطناعي للمعلمين</a>
+<div class="links">
+<a href="#day">اليوم التدريبي</a>
+<a href="#outcome">ما يخرج به المعلم</a>
+<a href="#miqass">أداة مِقَصّ</a>
+<a href="#follow">المتابعة</a>
+<a href="#cost">التكلفة</a>
+</div>
+<a class="btn b-yel" href="#contact">احجزوا التدريب</a>
+</div></nav>
+
+<header class="band hero" id="top"><div class="wrap">
+<div>
+<span class="tag">تدريب حضوري لمعلمي مدرستكم</span>
+<h1>يوم تدريبي واحد، ويعود كل معلم إلى صفه بدرس جاهز من مادته</h1>
+<p class="lead">يتعلّم معلموكم استخدام أدوات الذكاء الاصطناعي بوعي: يوفّرون وقت التحضير، ويحمون خصوصية الطلاب، ويراجعون كل ناتج قبل أن يصل إلى الصف.</p>
+<div class="cta"><a class="btn b-yel" href="#contact">اطلبوا جلسة التشخيص</a><a class="btn b-white" href="#day">برنامج اليوم</a></div>
+</div>
+<div class="scene" role="img" aria-label="كتاب مدرسي يقصّه مقصّ إلى أوراق دروس تطير نحو حاسوب عليه خطة درس جاهزة">
+<svg viewBox="0 0 600 520" aria-hidden="true">
+<defs>
+<g id="pg"><rect width="96" height="124" rx="8" fill="#fff" stroke="#0e1430" stroke-width="3"/><rect x="12" y="14" width="46" height="10" rx="5" fill="#2346d8"/><g stroke="#cfd8f7" stroke-width="5" stroke-linecap="round"><line x1="12" y1="44" x2="84" y2="44"/><line x1="12" y1="62" x2="84" y2="62"/><line x1="12" y1="80" x2="64" y2="80"/><line x1="12" y1="98" x2="76" y2="98"/></g></g>
+</defs>
+<ellipse cx="300" cy="490" rx="290" ry="22" fill="#1a33a6"/>
+<!-- laptop with plan (left) -->
+<g transform="translate(18,248)">
+<rect x="10" y="0" width="250" height="168" rx="14" fill="#0e1430"/>
+<rect x="24" y="14" width="222" height="140" rx="6" fill="#fff"/>
+<rect x="40" y="28" width="110" height="14" rx="7" fill="#2346d8"/>
+<rect x="196" y="26" width="36" height="18" rx="9" fill="#ffc83d" stroke="#0e1430" stroke-width="2"/>
+<g font-family="IBM Plex Sans Arabic,Tahoma,sans-serif" font-size="13" font-weight="700" fill="#0e1430" text-anchor="start">
+<text x="232" y="72">نواتج التعلّم</text><text x="232" y="102">النشاط</text><text x="232" y="132">التقويم</text></g>
+<g stroke="#cfd8f7" stroke-width="6" stroke-linecap="round"><line x1="40" y1="68" x2="140" y2="68"/><line x1="40" y1="98" x2="160" y2="98"/><line x1="40" y1="128" x2="130" y2="128"/></g>
+<path d="M0 168 h270 l-14 22 h-242z" fill="#d9dff5" stroke="#0e1430" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="250" cy="8" r="26" fill="#ef3e36" stroke="#0e1430" stroke-width="3"/>
+<path d="M238 8 l8 9 l16 -18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<!-- sparkles -->
+<g fill="#ffc83d" stroke="#0e1430" stroke-width="2.5" stroke-linejoin="round">
+<path d="M70 200 l8 -20 l8 20 l20 8 l-20 8 l-8 20 l-8 -20 l-20 -8z"/>
+<path d="M300 70 l5 -13 l5 13 l13 5 l-13 5 l-5 13 l-5 -13 l-13 -5z"/>
+</g>
+<!-- flying sheets -->
+<g class="fly"><g transform="translate(190,120) rotate(-14)"><use href="#pg"/></g></g>
+<g class="fly fly2"><g transform="translate(286,190) rotate(10)"><use href="#pg"/></g></g>
+<g class="fly fly3"><g transform="translate(150,36) rotate(6) scale(.8)"><use href="#pg"/></g></g>
+<!-- textbook (right) -->
+<g transform="translate(390,210)">
+<rect x="12" y="14" width="180" height="250" rx="14" fill="#0e1430"/>
+<rect width="180" height="250" rx="14" fill="#ffc83d" stroke="#0e1430" stroke-width="3"/>
+<rect x="152" y="10" width="18" height="230" rx="6" fill="#fff" stroke="#0e1430" stroke-width="2"/>
+<rect x="0" y="0" width="26" height="250" rx="12" fill="#e9a81f" stroke="#0e1430" stroke-width="3"/>
+<rect x="44" y="40" width="94" height="58" rx="10" fill="#2346d8" stroke="#0e1430" stroke-width="3"/>
+<text x="91" y="78" font-family="Lalezar,Tahoma,sans-serif" font-size="28" fill="#fff" text-anchor="middle">العلوم</text>
+<g stroke="#0e1430" stroke-width="5" stroke-linecap="round" opacity=".55"><line x1="48" y1="130" x2="134" y2="130"/><line x1="58" y1="152" x2="124" y2="152"/></g>
+<line x1="-6" y1="196" x2="186" y2="196" stroke="#ef3e36" stroke-width="4" stroke-dasharray="11 8"/>
+</g>
+<!-- scissors -->
+<g transform="translate(430,406) scale(-1,1) rotate(-4)">
+<g class="snip">
+<path d="M0 -4 L-150 -30 L-150 -18 Z" fill="#e8ecf8" stroke="#0e1430" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="42" cy="-26" rx="30" ry="22" fill="none" stroke="#ef3e36" stroke-width="12"/>
+</g>
+<path d="M0 4 L-150 26 L-150 14 Z" fill="#fff" stroke="#0e1430" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="42" cy="26" rx="30" ry="22" fill="none" stroke="#ef3e36" stroke-width="12"/>
+<circle cx="0" cy="0" r="7" fill="#0e1430"/>
+</g>
+</svg>
+</div>
+</div>
+<svg class="edge" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 L0 34 Q 100 4 200 34 T 400 34 T 600 34 T 800 34 T 1000 34 T 1200 34 L1200 70Z" fill="var(--yel)"/></svg>
+</header>
+
+<section class="stats"><div class="wrap">
+<div><b>4</b><span>جلسات عملية</span></div>
+<div><b>5</b><span>ساعات تقريباً</span></div>
+<div><b>1</b><span>درس جاهز لكل معلم</span></div>
+<div><b>0 ₪</b><span>اشتراكات مطلوبة</span></div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<h2>وقت أقل في التحضير، وثقة أكبر في الأداة</h2>
+<p class="intro">يقضي المعلم ساعات كل أسبوع في تحضير الدروس وأوراق العمل والاختبارات، وكثير من هذا الوقت يمكن اختصاره. في المقابل، يستخدم بعض المعلمين أدوات الذكاء الاصطناعي دون معرفة ما يجوز إدخاله فيها، ويتجنّبها آخرون خوفاً من أخطائها. لذلك يُصمَّم المحتوى بعد جلسة تشخيص قصيرة مع إدارة المدرسة.</p>
+<div class="why">
+<div class="sticker"><svg viewBox="0 0 74 74" aria-hidden="true"><circle cx="37" cy="39" r="30" fill="#ffc83d" stroke="#0e1430" stroke-width="3"/><path d="M37 21 V39 L50 47" fill="none" stroke="#0e1430" stroke-width="5" stroke-linecap="round"/></svg><h3>يوفّر وقته</h3><p>يحضّر خطة الدرس أو ورقة العمل في دقائق بدل ساعات.</p></div>
+<div class="sticker"><svg viewBox="0 0 74 74" aria-hidden="true"><path d="M37 6 L64 16 V36 C64 54 52 64 37 70 C22 64 10 54 10 36 V16Z" fill="#2346d8" stroke="#0e1430" stroke-width="3" stroke-linejoin="round"/><rect x="27" y="34" width="20" height="16" rx="3" fill="#fff"/><path d="M31 34 v-5 a6 6 0 0 1 12 0 v5" fill="none" stroke="#fff" stroke-width="4"/></svg><h3>يحمي طلابه</h3><p>يعرف ما لا يُدخَل أبداً في الأداة، ويعيد صياغة الطلب الحساس بشكل آمن.</p></div>
+<div class="sticker"><svg viewBox="0 0 74 74" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#fff" stroke="#0e1430" stroke-width="4"/><path d="M48 48 L66 66" stroke="#0e1430" stroke-width="9" stroke-linecap="round"/><path d="M22 32 l7 7 l13 -14" fill="none" stroke="#ef3e36" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>يراجع قبل الصف</h3><p>يفحص كل ناتج بقائمة واضحة قبل أن يصل إلى طلابه.</p></div>
+</div>
+</div></section>
+
+<section class="band day" id="day"><div class="wrap">
+<h2>برنامج اليوم التدريبي</h2>
+<p class="intro">أربع جلسات عملية، يعمل فيها كل معلم على جهازه وبمادته الحقيقية طوال اليوم.</p>
+<div class="tl" id="tt"></div>
+<div class="flex">
+<h3>برنامج مرن يُبنى مع المدرسة</h3>
+<p style="margin:6px 0 0">هذا البرنامج نقطة انطلاق، ونعدّله معكم في جلسة التشخيص بحسب متطلبات المدرسة ومواردها المتاحة:</p>
+<ul>
+<li><b>الموعد والمدة:</b> يوم واحد، أو جلستان في يومين، أو ما يناسب جدول المدرسة.</li>
+<li><b>المحتوى:</b> نزيد التركيز على ما يحتاجه معلموكم أكثر، ونختصر ما يتقنونه.</li>
+<li><b>الأجهزة والإنترنت:</b> نكيّف الأنشطة مع ما هو متوفر، سواء حاسوب لكل معلم أو هواتف أو عمل في مجموعات.</li>
+<li><b>المواد والمراحل:</b> تُختار الأمثلة من مواد المعلمين الحاضرين ومراحلهم، من الأساسية الدنيا حتى الثانوية.</li>
+</ul>
+</div>
+</div></section>
+
+<section class="band" id="outcome"><div class="wrap split">
+<div>
+<h2>ما يخرج به المعلم</h2>
+<p class="intro">ناتج جاهز للاستخدام في صفه، ومهارة يكرّرها وحده مع أي درس آخر.</p>
+<div class="outs" id="outs"></div>
+</div>
+<div>
+<h2>الأدوات المستخدمة</h2>
+<p class="intro">أدوات ذكاء اصطناعي عامة، وأداة مخصّصة للمعلمين، وأداة صمّمتها المدرّبة لهذا التدريب.</p>
+<div class="tools" id="tools"></div>
+<span class="free">لا تحتاج المدرسة إلى شراء أي اشتراك لبدء التدريب</span>
+</div>
+</div></section>
+
+<section class="band mq" id="miqass"><div class="wrap">
+<div>
+<h2>أداة «مِقَصّ»: من الكتاب المدرسي إلى درس جاهز</h2>
+<p class="intro">صمّمت المدرّبة أداة مِقَصّ خصيصاً لهذا التدريب. تقسّم ملف PDF للكتاب المدرسي إلى ملفات منفصلة، لكل درس ملف باسمه، فيعمل المعلم مع Brisk على الدرس المطلوب بالضبط بدل الكتاب كاملاً.</p>
+<div class="chips"><span>مجانية دون تسجيل</span><span>حاسوب وهاتف</span><span>كتب عربية وإنجليزية</span><span>لا يُرفَع الكتاب إلى أي خادم</span></div>
+<a class="btn b-yel" href="https://pdfcut.pages.dev/">جرّبوا مِقَصّ الآن</a>
+</div>
+<ol class="steps" id="steps"></ol>
+</div></section>
+
+<section class="band" id="follow"><div class="wrap">
+<h2>المتابعة وقياس الأثر</h2>
+<p class="intro">لا ينتهي التدريب بنهاية اليوم، لأن المهارة تثبت بالتطبيق في الصف. وتشمل الدورة دون تكلفة إضافية:</p>
+<div class="road" id="road"></div>
+</div></section>
+
+<section class="band after"><div class="wrap">
+<h2>ما بعد الدورة</h2>
+<p class="intro">هذا اليوم التدريبي بداية، والمدرّبة على استعداد تام لمرافقة المدرسة بعده بحسب احتياجاتها.</p>
+<div class="acards" id="after"></div>
+</div></section>
+
+<section class="band cost" id="cost"><div class="wrap split">
+<div class="sticker">
+<h2>التكلفة</h2>
+<p style="font-size:19px;font-weight:700;margin:0">لمعرفة التكلفة، يرجى التواصل معنا عبر <a href="#contact" style="color:var(--red)">البريد الإلكتروني</a>.</p>
+<p style="margin:12px 0 0;color:var(--soft)">وتشمل التكلفة جلسة التشخيص، واليوم التدريبي، والمواد المطبوعة، ولقاء المتابعة، وتقرير النتائج.</p>
+<div class="trainer"><div class="avatar">ن</div><div><h3>عن المدرّبة</h3><p style="margin:4px 0 0">ندى حنتولي، مهندسة برمجيات بخبرة طويلة في تطوير البرمجيات وضمان الجودة، وقيادة الفرق وتدريب الموظفين الجدد.</p></div></div>
+</div>
+<div class="sticker" style="box-shadow:7px 7px 0 var(--cob)">
+<h2>المطلوب من المدرسة</h2>
+<ul class="req"><li>قاعة مع جهاز عرض (بروجكتر) واتصال بالإنترنت.</li></ul>
+</div>
+</div></section>
+
+<section class="band contact" id="contact"><div class="wrap">
+<h2>لنبدأ بجلسة تشخيص قصيرة</h2>
+<p>نتعرّف فيها على معلميكم ومراحلهم وموادهم، ونحدّد موعد اليوم التدريبي بما يناسب جدول المدرسة.</p>
+<a class="btn b-red mail" href="mailto:nada.naeeem@gmail.com">nada.naeeem@gmail.com</a>
+</div></section>
+
+<footer><div class="wrap"><span>دورة الذكاء الاصطناعي للمعلمين · ندى حنتولي</span><a href="https://pdfcut.pages.dev/">pdfcut.pages.dev</a></div></footer>
+
+<script>
+{
+const S=[
+{t:"60",n:"كيف أكتب طلباً واضحاً؟",d:"صيغة من خمسة عناصر (الدور، المهمة، المستوى، الشكل، القيود) تعطي نتيجة قريبة مما يريده المعلم من المرة الأولى."},
+{t:"60",n:"الاستخدام الآمن والمسؤول",d:"ما لا يُدخَل أبداً في الأداة (بيانات الطلاب، الصور، الوثائق الداخلية)، وإعادة صياغة أي طلب حساس بشكل آمن."},
+{t:"60",n:"تحضير خطة درس كاملة",d:"خطة درس من المنهاج بنواتج تعلّم ونشاط وتقويم، باستخدام درس الكتاب نفسه مع أداة Brisk، ومراجعتها بقائمة فحص من خمس نقاط."},
+{t:"90–120",n:"ورشة «درسي الجاهز»",d:"ينجز كل معلم درساً أو ورقة عمل أو اختباراً لصفه في الأسبوع القادم، مع مراجعة من زميل وخطة تطبيق."}];
+const O=[
+["درس من مادته","خطة درس أو ورقة عمل أو اختبار، راجعه بنفسه وتأكد من صحته."],
+["قوالب طلبات","قوالب جاهزة يحفظها ويعيد استخدامها مع أي درس."],
+["أوراق ملخّص","أوراق مطبوعة للرجوع إليها بعد التدريب."],
+["قواعد الخصوصية","قواعد واضحة لحماية بيانات الطلاب."]];
+const T=[
+["C","ChatGPT","أداة ذكاء اصطناعي عامة","#0e1430"],
+["G","Gemini","أداة ذكاء اصطناعي عامة","#2346d8"],
+["B","Brisk","أداة مخصّصة للمعلمين","#ef3e36"],
+["✂","مِقَصّ","تقسيم الكتاب المدرسي إلى دروس","#ffc83d;color:#0e1430"]];
+const ST=[
+"يرفع المعلم ملف الكتاب على الموقع، فيتعرّف على الوحدات والدروس تلقائياً.",
+"يراجع أسماء الدروس وصفحاتها ويعدّلها إن لزم.",
+"ينزّل الدروس ملفات منفصلة بجودة الأصل نفسها.",
+"يستخدم ملف الدرس مع Brisk لإعداد خطة درس أو اختبار أو ورقة عمل، ثم يراجع الناتج."];
+const ic={
+q:'<path d="M5 3h14v18H5z M8 8h8 M8 12h8 M8 16h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+w:'<path d="M4 18l1.5-4A8 8 0 1 1 9 19z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>',
+m:'<circle cx="8" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="16" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 19c1-3 3-4 5-4s4 1 5 4M11 19c1-3 3-4 5-4s4 1 5 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+r:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>'};
+const F=[
+["q","قبل التدريب وبعده","استبيان","يُعبّأ من الهاتف عبر رمز QR دون ذكر الأسماء، لقياس التغيّر في ارتياح المعلمين والوقت الذي يوفّرونه."],
+["w","من يوم التدريب","مجموعة واتساب","للمعلمين المشاركين، للأسئلة ومشاركة الروابط والنماذج الناجحة."],
+["m","بعد أسبوعين","لقاء متابعة","مدته 30 إلى 45 دقيقة: يعرض فيه المعلمون ما طبّقوه، ونحلّ المشكلات التي واجهوها."],
+["r","في الختام","تقرير لإدارة المدرسة","تقرير مختصر بنتائج الاستبيان واحتياجات المعلمين للمرحلة القادمة."]];
+const A=[
+["التعمّق في أي موضوع","تدريب أكثر احترافية في أي مجال يخص استخدام الذكاء الاصطناعي في مساعدة المعلم، مثل أوراق العمل بمستويات متدرجة، أو الألعاب التعليمية، أو التواصل مع الأهالي."],
+["دورة ثانية مصممة للمدرسة","بعد انتهاء الدورة الأولى وتقييمها، نقدّم عرضاً لدورة متقدّمة مبنية على نتائج الاستبيان وما يحتاجه معلمو المدرسة فعلاً."],
+["مشاريع ومواقع خاصة بالمدرسة","تنفيذ أداة أو موقع إلكتروني يخدم احتياجاً محدداً للمدرسة، على غرار أداة «مِقَصّ»."]];
+const $=id=>document.getElementById(id);
+$("tt").innerHTML=S.map((s,i)=>`<div class="ses"><div class="t"><b${s.t.length>3?' style="font-size:clamp(24px,2.6vw,32px)"':''}>${s.t}</b><span>دقيقة</span></div><div class="sticker"><h3><span class="n">الجلسة ${i+1}</span>${s.n}</h3><p>${s.d}</p></div></div>`).join("");
+$("outs").innerHTML=O.map(o=>`<div class="sticker"><h3>${o[0]}</h3><p>${o[1]}</p></div>`).join("");
+$("tools").innerHTML=T.map(t=>`<div class="sticker tool"><i style="background:${t[3]}">${t[0]}</i><div><h3 dir="auto">${t[1]}</h3><small>${t[2]}</small></div></div>`).join("");
+$("steps").innerHTML=ST.map(s=>`<li><span>${s}</span></li>`).join("");
+$("road").innerHTML=F.map(f=>`<div class="stop"><div class="dot"><svg viewBox="0 0 24 24">${ic[f[0]]}</svg></div><div class="when">${f[1]}</div><h3>${f[2]}</h3><p>${f[3]}</p></div>`).join("");
+$("after").innerHTML=A.map((a,i)=>`<div class="sticker"><b>${i+1}</b><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join("");
+}
+</script>
+</body>
+</html>
